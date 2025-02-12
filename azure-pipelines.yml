@@ -36,5 +36,11 @@ jobs:
       - script: cd yarn-example && npx momentic@latest install-browsers chromium
         displayName: "Install Chromium browser via Momentic"
 
-      - script: cd yarn-example && CI=true npx momentic@latest run --verbose --api-key $(MOMENTIC_API_KEY) random-test.test.yaml
+      - script: mkdir new-workspace && cd new-workspace && npx momentic@latest init
+
+      - script: cd yarn-example && npx momentic@latest check-config
+
+      - script: cd yarn-example && npx momentic@latest import-from-cloud
+
+      - script: cd yarn-example && CI=true npx momentic@latest run random-test.test.yaml
         displayName: Execute test via Momentic
