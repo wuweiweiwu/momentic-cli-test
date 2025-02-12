@@ -33,12 +33,9 @@ jobs:
       - script: node --version
         displayName: "Node.js version"
 
-      - script: cd yarn-example && CI=true npx momentic@latest import-from-cloud
+      - script: cd yarn-example && CI=true echo $CI
         env:
           CI: true
-
-      - script: cd yarn-example && npx momentic@latest install-browsers chromium
-        displayName: "Install Chromium browser via Momentic"
 
       - task: Bash@3
         inputs:
