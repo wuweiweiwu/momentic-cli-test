@@ -16,13 +16,13 @@ jobs:
           versionSpec: 20.x
         displayName: "Use Node v20"
 
-      - script: npm install -g yarn && yarn set version berry
-        displayName: install and upgrade yarn
+      # - script: npm install -g yarn && yarn set version berry
+      #   displayName: install and upgrade yarn
 
       - script: corepack enable
         displayName: "Enable corepack"
 
-      - script: cd yarn-example && yarn install --immutable
+      - script: cd yarn-example && pnpm i --frozen-lockfile
         displayName: install dependencies
 
       - script: cd yarn-example && ls -a
@@ -31,8 +31,8 @@ jobs:
       - script: node --version
         displayName: "Node.js version"
 
-      - script: cd yarn-example && yarn dlx momentic@latest install-browsers chromium
+      - script: cd yarn-example && npx momentic@latest install-browsers chromium
         displayName: "Install Chromium browser via Momentic"
 
-      - script: cd yarn-example && CI=true yarn dlx momentic@latest run --verbose --api-key $(MOMENTIC_API_KEY) random-test.test.yaml
+      - script: cd yarn-example && CI=true npx momentic@latest run --verbose --api-key $(MOMENTIC_API_KEY) random-test.test.yaml
         displayName: Execute test via Momentic
