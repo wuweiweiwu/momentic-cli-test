@@ -1,0 +1,35 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+- group: momentic-prod
+
+jobs:
+- job: RunMomentic
+  displayName: 'Run Momentic'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: 20.x
+    displayName: 'Use Node v20'
+
+  - script: corepack enable
+    displayName: 'Enable corepack'
+
+  - script: yarn install --immutable
+    displayName: install dependencies
+
+  - script: cd yarn-example && ls -a
+    displayName: 'List files in the current directory'
+  
+  - script: node --version
+    displayName: 'Node.js version'
+
+  - script: cd yarn-example && yarn run momentic install-browsers chromium
+    displayName: 'Install Chromium browser via Momentic'
+
+  - script: cd yarn-example && CI=true yarn dlx momentic@latest run --verbose --api-key $(MOMENTIC_API_KEY) random-test.test.yaml
+    displayName: Execute high school test via Momentic
