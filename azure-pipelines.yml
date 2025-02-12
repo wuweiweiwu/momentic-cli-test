@@ -18,8 +18,7 @@ jobs:
 
       # - script: npm install -g yarn && yarn set version berry
       #   displayName: install and upgrade yarn
-
-      - script: corepack enable
+      - script: npm i -g corepack@latest && corepack enable
         displayName: "Enable corepack"
 
       - script: cd yarn-example && pnpm i --frozen-lockfile
