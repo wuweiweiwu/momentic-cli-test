@@ -15,6 +15,9 @@ jobs:
     inputs:
       versionSpec: 20.x
     displayName: 'Use Node v20'
+    
+  - script: npm install -g yarn && yarn set version berry
+    displayName: install and upgrade yarn
 
   - script: corepack enable
     displayName: 'Enable corepack'
