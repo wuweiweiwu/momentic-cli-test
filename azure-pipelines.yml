@@ -28,8 +28,8 @@ jobs:
   - script: node --version
     displayName: 'Node.js version'
 
-  - script: cd yarn-example && yarn run momentic install-browsers chromium
+  - script: cd yarn-example && yarn dlx momentic@latest install-browsers chromium
     displayName: 'Install Chromium browser via Momentic'
 
   - script: cd yarn-example && CI=true yarn dlx momentic@latest run --verbose --api-key $(MOMENTIC_API_KEY) random-test.test.yaml
-    displayName: Execute high school test via Momentic
+    displayName: Execute test via Momentic
