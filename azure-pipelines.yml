@@ -21,6 +21,9 @@ jobs:
       - script: npm i -g corepack@latest && corepack enable
         displayName: "Enable corepack"
 
+      - script: npm install -g pnpm@8.7.6
+        displayName: "Install pnpm"
+
       - script: cd yarn-example && pnpm i --frozen-lockfile
         displayName: install dependencies
 
