@@ -33,14 +33,9 @@ jobs:
       - script: node --version
         displayName: "Node.js version"
 
-      - script: cd yarn-example && CI=true npx momentic@latest check-config
-        env:
-          CI: true
-
       - task: Bash@3
         inputs:
-          targetType: "inline"
-          script: "cd yarn-example && CI=true npx momentic@alpha --log-level debug run random-test.test.yaml"
+          targetType: "filePath"
+          filePath: "azure.sh"
         env:
           CI: true
-          BASH_ENV: "~/.profile"
