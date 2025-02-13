@@ -44,6 +44,6 @@ jobs:
           CI: true
 
       # cat the npm debug log
-      - script: cat /home/AzDevOps/.npm/_logs/*.log
+      - script: ps aux && cat /home/AzDevOps/.npm/_logs/*.log
         displayName: Check npm logs
         condition: always()
