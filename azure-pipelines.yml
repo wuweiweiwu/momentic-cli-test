@@ -36,6 +36,10 @@ jobs:
       - script: df -h
         displayName: Check disk space
 
+      - script: npx momentic@alpha queue tests --wait ai-action
+        env:
+          CI: true
+
       - task: Bash@3
         inputs:
           targetType: "filePath"
