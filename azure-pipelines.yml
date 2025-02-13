@@ -33,7 +33,7 @@ jobs:
       - script: node --version
         displayName: "Node.js version"
 
-      - script: cd yarn-example && CI=true echo $CI
+      - script: cd yarn-example && CI=true npx momentic@latest check-config
         env:
           CI: true
 
