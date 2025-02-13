@@ -33,6 +33,9 @@ jobs:
       - script: node --version
         displayName: "Node.js version"
 
+      - script: df -h
+        displayName: Check disk space
+
       - task: Bash@3
         inputs:
           targetType: "filePath"
